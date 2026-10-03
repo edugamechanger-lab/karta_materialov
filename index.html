@@ -1,0 +1,2273 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Карта учебных материалов — готовый метапромпт</title>
+
+<style>
+:root{
+  --ink:#1e293b;
+  --muted:#667085;
+  --paper:#f8f7f2;
+  --white:#ffffff;
+
+  --blue:#5478d8;
+  --blue-soft:#e9efff;
+
+  --green:#3d9278;
+  --green-soft:#e5f4ee;
+
+  --yellow:#e3a93c;
+  --yellow-soft:#fff2ce;
+
+  --coral:#dc7868;
+  --coral-soft:#fbe9e5;
+
+  --purple:#8368c7;
+  --purple-soft:#eee9fb;
+
+  --dark:#202b42;
+  --line:#dfe3eb;
+
+  --shadow:0 18px 55px rgba(35,46,70,.09);
+}
+
+*{
+  box-sizing:border-box;
+}
+
+html{
+  scroll-behavior:smooth;
+}
+
+body{
+  margin:0;
+  background:var(--paper);
+  color:var(--ink);
+  font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  line-height:1.55;
+}
+
+a{
+  color:inherit;
+}
+
+button{
+  font:inherit;
+}
+
+.container{
+  width:min(1160px,calc(100% - 40px));
+  margin:auto;
+}
+
+.section{
+  padding:90px 0;
+}
+
+.eyebrow{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  padding:8px 13px;
+  border-radius:999px;
+  background:var(--yellow-soft);
+  color:#795711;
+  font-size:13px;
+  font-weight:800;
+  letter-spacing:.04em;
+  text-transform:uppercase;
+}
+
+h1,h2,h3,p{
+  margin-top:0;
+}
+
+h1{
+  font-size:clamp(48px,7vw,90px);
+  line-height:.95;
+  letter-spacing:-.055em;
+  margin:24px 0 26px;
+  max-width:930px;
+}
+
+h2{
+  font-size:clamp(34px,4.5vw,58px);
+  line-height:1.03;
+  letter-spacing:-.045em;
+  margin-bottom:22px;
+}
+
+.lead{
+  font-size:clamp(19px,2vw,25px);
+  line-height:1.45;
+  color:#465267;
+  max-width:820px;
+}
+
+.small{
+  font-size:14px;
+  color:var(--muted);
+}
+
+/* HERO */
+
+.hero{
+  min-height:96vh;
+  display:flex;
+  align-items:center;
+  padding:70px 0;
+  position:relative;
+  overflow:hidden;
+}
+
+.hero::before{
+  content:"";
+  position:absolute;
+  width:440px;
+  height:440px;
+  border-radius:50%;
+  background:var(--blue-soft);
+  right:-110px;
+  top:-130px;
+}
+
+.hero::after{
+  content:"";
+  position:absolute;
+  width:330px;
+  height:330px;
+  border-radius:50%;
+  background:var(--yellow-soft);
+  left:-170px;
+  bottom:-90px;
+}
+
+.hero-inner{
+  position:relative;
+  z-index:2;
+}
+
+.hero h1 span{
+  color:var(--blue);
+}
+
+.hero-actions{
+  display:flex;
+  gap:12px;
+  flex-wrap:wrap;
+  margin-top:30px;
+}
+
+.hero-prompt-btn{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  padding:16px 23px;
+  border-radius:15px;
+  background:var(--dark);
+  color:white;
+  text-decoration:none;
+  font-weight:850;
+  transition:.2s ease;
+  box-shadow:0 12px 30px rgba(32,43,66,.16);
+}
+
+.hero-prompt-btn:hover{
+  transform:translateY(-2px);
+}
+
+.hero-bottom{
+  margin-top:55px;
+  display:grid;
+  grid-template-columns:1.2fr .8fr;
+  gap:22px;
+}
+
+.hero-card{
+  border-radius:28px;
+  padding:30px;
+  background:white;
+  box-shadow:var(--shadow);
+}
+
+.hero-card.green{
+  background:var(--green);
+  color:white;
+}
+
+.hero-card strong{
+  display:block;
+  font-size:22px;
+  line-height:1.25;
+  margin-bottom:8px;
+}
+
+/* PROBLEM */
+
+.problem-grid{
+  display:grid;
+  grid-template-columns:.85fr 1.15fr;
+  gap:50px;
+  align-items:center;
+}
+
+.mess{
+  position:relative;
+  min-height:440px;
+}
+
+.note{
+  position:absolute;
+  width:220px;
+  padding:22px;
+  background:white;
+  border:1px solid rgba(0,0,0,.06);
+  box-shadow:0 15px 40px rgba(32,42,65,.09);
+  border-radius:18px;
+  font-weight:700;
+}
+
+.note:nth-child(1){
+  top:10px;
+  left:8%;
+  transform:rotate(-6deg);
+  background:var(--yellow-soft);
+}
+
+.note:nth-child(2){
+  top:90px;
+  right:5%;
+  transform:rotate(5deg);
+  background:var(--blue-soft);
+}
+
+.note:nth-child(3){
+  top:205px;
+  left:18%;
+  transform:rotate(3deg);
+  background:var(--coral-soft);
+}
+
+.note:nth-child(4){
+  bottom:10px;
+  right:12%;
+  transform:rotate(-4deg);
+  background:var(--green-soft);
+}
+
+/* BEFORE AFTER */
+
+.transformation{
+  background:var(--dark);
+  color:white;
+}
+
+.transformation .lead{
+  color:#cdd5e4;
+}
+
+.flow{
+  display:grid;
+  grid-template-columns:1fr 120px 1fr;
+  align-items:center;
+  gap:24px;
+  margin-top:55px;
+}
+
+.before,
+.after{
+  border-radius:30px;
+  padding:34px;
+  min-height:370px;
+}
+
+.before{
+  background:#2b3750;
+}
+
+.after{
+  background:var(--green-soft);
+  color:var(--ink);
+}
+
+.flow-label{
+  font-size:12px;
+  text-transform:uppercase;
+  font-weight:900;
+  letter-spacing:.12em;
+  opacity:.7;
+  margin-bottom:25px;
+}
+
+.stack{
+  display:grid;
+  gap:12px;
+}
+
+.stack-item{
+  padding:15px 17px;
+  border-radius:13px;
+  background:rgba(255,255,255,.09);
+  font-weight:700;
+}
+
+.after .stack-item{
+  background:white;
+  border:1px solid #d8e7e1;
+}
+
+.bridge{
+  text-align:center;
+}
+
+.bridge-circle{
+  width:100px;
+  height:100px;
+  margin:auto;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  border-radius:50%;
+  background:var(--yellow);
+  color:#33250b;
+  font-size:15px;
+  font-weight:900;
+  text-align:center;
+  line-height:1.15;
+}
+
+/* PROCESS */
+
+.process{
+  display:grid;
+  grid-template-columns:repeat(5,1fr);
+  gap:12px;
+  margin-top:48px;
+}
+
+.process-card{
+  padding:25px 20px;
+  border-radius:22px;
+  min-height:170px;
+}
+
+.process-card:nth-child(1){background:var(--blue-soft);}
+.process-card:nth-child(2){background:var(--green-soft);}
+.process-card:nth-child(3){background:var(--yellow-soft);}
+.process-card:nth-child(4){background:var(--purple-soft);}
+.process-card:nth-child(5){background:var(--coral-soft);}
+
+.num{
+  width:32px;
+  height:32px;
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:white;
+  font-weight:900;
+  margin-bottom:25px;
+}
+
+.process-card strong{
+  display:block;
+  font-size:18px;
+  line-height:1.25;
+}
+
+/* OUTPUT */
+
+.get-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:16px;
+  margin-top:45px;
+}
+
+.get-card{
+  background:white;
+  padding:28px;
+  border-radius:24px;
+  border:1px solid #e5e7ec;
+}
+
+.get-card .number{
+  font-size:13px;
+  font-weight:900;
+  color:var(--blue);
+  margin-bottom:30px;
+}
+
+.get-card h3{
+  font-size:20px;
+  margin-bottom:8px;
+}
+
+.get-card p{
+  color:var(--muted);
+  margin:0;
+}
+
+/* STEPS */
+
+.steps-wrap{
+  background:var(--blue-soft);
+  border-radius:42px;
+  padding:55px;
+}
+
+.steps{
+  margin-top:40px;
+}
+
+.step{
+  display:grid;
+  grid-template-columns:70px 1fr;
+  gap:20px;
+  padding:26px 0;
+  border-bottom:1px solid rgba(57,81,130,.15);
+}
+
+.step:last-child{
+  border-bottom:0;
+}
+
+.step-number{
+  font-size:40px;
+  font-weight:900;
+  color:var(--blue);
+  line-height:1;
+}
+
+.step strong{
+  display:block;
+  font-size:20px;
+  margin-bottom:6px;
+}
+
+.step p{
+  margin:0;
+}
+
+.voice-tip{
+  margin-top:15px;
+  padding:16px 18px;
+  background:white;
+  border-radius:16px;
+  display:flex;
+  gap:12px;
+  align-items:flex-start;
+}
+
+.mic{
+  flex:0 0 auto;
+  width:38px;
+  height:38px;
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:var(--coral-soft);
+}
+
+/* RESULT */
+
+.result{
+  background:white;
+}
+
+.result-shell{
+  border:1px solid var(--line);
+  border-radius:28px;
+  overflow:hidden;
+  margin-top:45px;
+  box-shadow:var(--shadow);
+}
+
+.result-top{
+  padding:22px 26px;
+  background:#f1f3f8;
+  display:flex;
+  justify-content:space-between;
+  gap:20px;
+  align-items:center;
+}
+
+.result-top strong{
+  font-size:17px;
+}
+
+.table-scroll{
+  overflow-x:auto;
+}
+
+table{
+  width:100%;
+  min-width:1000px;
+  border-collapse:collapse;
+  font-size:14px;
+}
+
+th{
+  text-align:left;
+  padding:17px;
+  background:var(--dark);
+  color:white;
+  vertical-align:top;
+}
+
+td{
+  padding:17px;
+  border-bottom:1px solid #e7e9ef;
+  vertical-align:top;
+}
+
+tr:last-child td{
+  border-bottom:0;
+}
+
+.topic{
+  font-weight:800;
+  width:180px;
+}
+
+.tag{
+  display:inline-block;
+  padding:5px 9px;
+  border-radius:8px;
+  background:var(--blue-soft);
+  color:#39559f;
+  font-size:12px;
+  font-weight:800;
+}
+
+.tag.personal{
+  background:var(--purple-soft);
+  color:#634ba3;
+}
+
+.tag.check{
+  background:var(--coral-soft);
+  color:#9a4f43;
+}
+
+/* PROMPT */
+
+.prompt-section{
+  background:#172033;
+  color:white;
+  scroll-margin-top:20px;
+}
+
+.prompt-section .lead{
+  color:#c7cfde;
+}
+
+.prompt-intro{
+  display:grid;
+  grid-template-columns:1fr auto;
+  gap:30px;
+  align-items:end;
+}
+
+.prompt-shell{
+  margin-top:42px;
+  border-radius:28px;
+  overflow:hidden;
+  border:1px solid #3c465b;
+  background:#111827;
+}
+
+.prompt-bar{
+  padding:18px 20px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:20px;
+  border-bottom:1px solid #303a4d;
+  position:sticky;
+  top:0;
+  z-index:3;
+  background:#111827;
+}
+
+.prompt-bar strong{
+  font-size:15px;
+}
+
+.actions{
+  display:flex;
+  gap:10px;
+}
+
+.btn{
+  border:0;
+  border-radius:12px;
+  padding:11px 16px;
+  cursor:pointer;
+  font-weight:800;
+  transition:.2s ease;
+}
+
+.btn:hover{
+  transform:translateY(-1px);
+}
+
+.btn-copy{
+  background:var(--yellow);
+  color:#2f250d;
+}
+
+.btn-expand{
+  background:#2b3548;
+  color:white;
+}
+
+.prompt-content{
+  position:relative;
+  max-height:520px;
+  overflow:hidden;
+  transition:max-height .5s ease;
+}
+
+.prompt-content.open{
+  max-height:none;
+}
+
+.prompt-content:not(.open)::after{
+  content:"";
+  position:absolute;
+  left:0;
+  right:0;
+  bottom:0;
+  height:150px;
+  background:linear-gradient(transparent,#111827);
+  pointer-events:none;
+}
+
+pre{
+  margin:0;
+  padding:30px;
+  white-space:pre-wrap;
+  word-wrap:break-word;
+  font-family:"SFMono-Regular",Consolas,"Liberation Mono",monospace;
+  font-size:13px;
+  line-height:1.72;
+  color:#e7ebf2;
+}
+
+/* CTA */
+
+.cta{
+  padding:100px 0;
+}
+
+.cta-box{
+  background:var(--yellow-soft);
+  border-radius:40px;
+  padding:60px;
+  position:relative;
+  overflow:hidden;
+}
+
+.cta-box::after{
+  content:"→";
+  position:absolute;
+  right:35px;
+  bottom:-50px;
+  font-size:230px;
+  font-weight:900;
+  color:rgba(180,129,25,.09);
+}
+
+.cta-box h2{
+  max-width:800px;
+}
+
+.telegram{
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+  padding:16px 22px;
+  margin-top:15px;
+  border-radius:15px;
+  background:var(--dark);
+  color:white;
+  text-decoration:none;
+  font-weight:850;
+  position:relative;
+  z-index:2;
+  transition:.2s ease;
+}
+
+.telegram:hover{
+  transform:translateY(-2px);
+}
+
+.footer{
+  padding:25px 0 50px;
+  color:var(--muted);
+  font-size:13px;
+}
+
+/* RESPONSIVE */
+
+@media(max-width:850px){
+  .section{
+    padding:65px 0;
+  }
+
+  .hero-bottom,
+  .problem-grid,
+  .flow,
+  .prompt-intro{
+    grid-template-columns:1fr;
+  }
+
+  .bridge{
+    padding:10px;
+  }
+
+  .process{
+    grid-template-columns:1fr 1fr;
+  }
+
+  .get-grid{
+    grid-template-columns:1fr 1fr;
+  }
+
+  .mess{
+    min-height:400px;
+  }
+
+  .steps-wrap{
+    padding:35px 25px;
+  }
+
+  .cta-box{
+    padding:40px 28px;
+  }
+}
+
+@media(max-width:560px){
+  .container{
+    width:min(100% - 24px,1160px);
+  }
+
+  h1{
+    font-size:48px;
+  }
+
+  .process,
+  .get-grid{
+    grid-template-columns:1fr;
+  }
+
+  .hero-card{
+    padding:24px;
+  }
+
+  .note{
+    width:190px;
+    font-size:14px;
+  }
+
+  .prompt-bar{
+    align-items:flex-start;
+    flex-direction:column;
+  }
+
+  .actions{
+    width:100%;
+  }
+
+  .actions .btn{
+    flex:1;
+  }
+
+  .step{
+    grid-template-columns:50px 1fr;
+  }
+
+  .step-number{
+    font-size:32px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<!-- =========================
+     HERO
+========================= -->
+
+<header class="hero">
+  <div class="container hero-inner">
+
+    <span class="eyebrow">
+      готовый метапромпт для преподавателя
+    </span>
+
+    <h1>
+      Карта<br>
+      <span>учебных материалов</span>
+    </h1>
+
+    <p class="lead">
+      Расскажите ИИ про своих учеников и программу —
+      получите карту материалов на весь учебный период.
+    </p>
+
+    <div class="hero-actions">
+      <a class="hero-prompt-btn" href="#metaprompt">
+        Перейти к метапромпту ↓
+      </a>
+    </div>
+
+    <div class="hero-bottom">
+
+      <div class="hero-card">
+        <strong>
+          Один метапромпт вместо подготовки каждого урока по отдельности
+        </strong>
+
+        <span class="small">
+          Поможет понять, что подготовить на неделю, месяц,
+          четверть, семестр, учебный раздел или серию занятий.
+        </span>
+      </div>
+
+      <div class="hero-card green">
+        <strong>
+          Подойдет, даже если у вас есть только список тем.
+        </strong>
+
+        <span>
+          А если есть КТП, программа, тематический план
+          или учебник — добавьте и их.
+        </span>
+      </div>
+
+    </div>
+
+  </div>
+</header>
+
+
+<!-- =========================
+     PROBLEM
+========================= -->
+
+<section class="section">
+  <div class="container problem-grid">
+
+    <div>
+
+      <span class="eyebrow">знакомо?</span>
+
+      <h2>
+        КТП есть.<br>
+        Ученики есть.<br>
+        А дальше?
+      </h2>
+
+      <p class="lead">
+        К этому уроку нужна презентация. Сюда — рабочий лист.
+        Здесь пора провести самостоятельную. А этому ученику
+        нужна отдельная версия материала.
+      </p>
+
+      <p>
+        Подготовка существует кусками, и перед каждым занятием
+        приходится заново решать: что именно мне сейчас нужно сделать?
+      </p>
+
+    </div>
+
+    <div class="mess">
+      <div class="note">
+        КТП<br>
+        25 занятий
+      </div>
+
+      <div class="note">
+        Миша<br>
+        нужны пошаговые опоры
+      </div>
+
+      <div class="note">
+        Лена<br>
+        базовые задания слишком легкие
+      </div>
+
+      <div class="note">
+        Когда поставить самостоятельную?
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- =========================
+     BEFORE / AFTER
+========================= -->
+
+<section class="section transformation">
+  <div class="container">
+
+    <span class="eyebrow">до → после</span>
+
+    <h2>
+      Не готовиться к каждому<br>
+      занятию отдельно.
+    </h2>
+
+    <p class="lead">
+      Сначала увидеть всю систему подготовки.
+    </p>
+
+    <div class="flow">
+
+      <div class="before">
+
+        <div class="flow-label">
+          сейчас все кусками
+        </div>
+
+        <div class="stack">
+          <div class="stack-item">КТП и список тем</div>
+          <div class="stack-item">Учебник</div>
+          <div class="stack-item">Особенности класса</div>
+          <div class="stack-item">Отдельные ученики</div>
+          <div class="stack-item">Заметки и ограничения</div>
+        </div>
+
+      </div>
+
+      <div class="bridge">
+        <div class="bridge-circle">
+          МЕТА<br>ПРОМПТ
+        </div>
+      </div>
+
+      <div class="after">
+
+        <div class="flow-label">
+          после
+        </div>
+
+        <div class="stack">
+          <div class="stack-item">Темы распределены</div>
+          <div class="stack-item">Материалы определены</div>
+          <div class="stack-item">Понятно, для кого они нужны</div>
+          <div class="stack-item">Учтена персонализация</div>
+          <div class="stack-item">Есть чек-лист подготовки</div>
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+
+<!-- =========================
+     PRINCIPLE
+========================= -->
+
+<section class="section">
+  <div class="container">
+
+    <span class="eyebrow">как это работает</span>
+
+    <h2>
+      Из контекста —<br>
+      в готовую карту.
+    </h2>
+
+    <div class="process">
+
+      <div class="process-card">
+        <div class="num">1</div>
+        <strong>Учащиеся</strong>
+      </div>
+
+      <div class="process-card">
+        <div class="num">2</div>
+        <strong>Программа и темы</strong>
+      </div>
+
+      <div class="process-card">
+        <div class="num">3</div>
+        <strong>Количество занятий</strong>
+      </div>
+
+      <div class="process-card">
+        <div class="num">4</div>
+        <strong>ИИ собирает все в систему</strong>
+      </div>
+
+      <div class="process-card">
+        <div class="num">5</div>
+        <strong>Карта материалов</strong>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+
+<!-- =========================
+     OUTPUT
+========================= -->
+
+<section class="section" style="background:#f0f2f7">
+  <div class="container">
+
+    <span class="eyebrow">что вы получите</span>
+
+    <h2>
+      Не просто список<br>
+      материалов.
+    </h2>
+
+    <p class="lead">
+      Метапромпт связывает программу с реальными
+      потребностями ваших учащихся.
+    </p>
+
+    <div class="get-grid">
+
+      <div class="get-card">
+        <div class="number">01</div>
+        <h3>Профиль группы или ученика</h3>
+        <p>
+          Сильные стороны, трудности, темп,
+          самостоятельность и необходимые опоры.
+        </p>
+      </div>
+
+      <div class="get-card">
+        <div class="number">02</div>
+        <h3>Распределение тем</h3>
+        <p>
+          С учетом программы и реального количества
+          доступных занятий.
+        </p>
+      </div>
+
+      <div class="get-card">
+        <div class="number">03</div>
+        <h3>Карта материалов</h3>
+        <p>
+          Что подготовить, к какой теме,
+          для кого и зачем.
+        </p>
+      </div>
+
+      <div class="get-card">
+        <div class="number">04</div>
+        <h3>Персонализация</h3>
+        <p>
+          Отдельные версии только для тех учащихся,
+          которым они действительно нужны.
+        </p>
+      </div>
+
+      <div class="get-card">
+        <div class="number">05</div>
+        <h3>Пожелания генератору</h3>
+        <p>
+          Готовые требования для создания
+          каждого следующего материала.
+        </p>
+      </div>
+
+      <div class="get-card">
+        <div class="number">06</div>
+        <h3>Чек-лист подготовки</h3>
+        <p>
+          Все материалы в порядке подготовки:
+          создавайте и отмечайте готовые.
+        </p>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+
+<!-- =========================
+     HOW TO USE
+========================= -->
+
+<section class="section">
+  <div class="container">
+
+    <div class="steps-wrap">
+
+      <span class="eyebrow">4 шага</span>
+
+      <h2>
+        Как использовать
+      </h2>
+
+      <div class="steps">
+
+        <div class="step">
+
+          <div class="step-number">1</div>
+
+          <div>
+            <strong>
+              Скопируйте метапромпт.
+            </strong>
+
+            <p>
+              Вставьте его в ChatGPT, Qwen, DeepSeek,
+              Claude, Gemini или другую нейросеть.
+            </p>
+          </div>
+
+        </div>
+
+
+        <div class="step">
+
+          <div class="step-number">2</div>
+
+          <div>
+            <strong>
+              Расскажите о своих учениках.
+            </strong>
+
+            <p>
+              Не нужно заполнять длинную анкету вручную.
+              Метапромпт сам задаст вопросы и подскажет,
+              что важно рассказать.
+            </p>
+
+            <div class="voice-tip">
+
+              <div class="mic">🎙</div>
+
+              <div>
+                <strong style="font-size:16px">
+                  Можно просто наговорить ответ голосом.
+                </strong>
+
+                <span class="small">
+                  Нажмите кнопку с микрофоном — обычно она находится
+                  справа в окне ввода — и выберите «Диктовать».
+                  Затем просто расскажите про класс или ученика
+                  своими словами.
+                </span>
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+
+        <div class="step">
+
+          <div class="step-number">3</div>
+
+          <div>
+            <strong>
+              Добавьте то, по чему вы работаете.
+            </strong>
+
+            <p>
+              Приложите программу, КТП, тематический план,
+              список тем или учебник, если они у вас есть.
+            </p>
+          </div>
+
+        </div>
+
+
+        <div class="step">
+
+          <div class="step-number">4</div>
+
+          <div>
+            <strong>
+              Получите готовую карту подготовки.
+            </strong>
+
+            <p>
+              Что подготовить → к какой теме → для кого →
+              зачем нужен материал → что важно учесть
+              при его генерации.
+            </p>
+          </div>
+
+        </div>
+
+      </div>
+
+      <p style="margin:25px 0 0">
+        В конце ИИ соберет еще и
+        <strong>чек-лист всех материалов</strong>,
+        чтобы вы могли создавать их последовательно
+        и отмечать готовые.
+      </p>
+
+    </div>
+
+  </div>
+</section>
+
+
+<!-- =========================
+     REAL RESULT
+========================= -->
+
+<section class="section result">
+  <div class="container">
+
+    <span class="eyebrow">реальный результат</span>
+
+    <h2>
+      Вот что получилось<br>
+      для одного класса.
+    </h2>
+
+    <p class="lead">
+      5 класс · русский язык · раздел «Морфемика».
+      В классе 16 учеников. Большинство —
+      среднего и слабого уровня.
+    </p>
+
+    <div class="result-shell">
+
+      <div class="result-top">
+        <strong>
+          Фрагмент карты учебных материалов
+        </strong>
+
+        <span class="small">
+          пример результата метапромпта
+        </span>
+      </div>
+
+      <div class="table-scroll">
+
+        <table>
+
+          <thead>
+            <tr>
+              <th>Тема</th>
+              <th>Материал</th>
+              <th>Для кого</th>
+              <th>Зачем</th>
+              <th>Что учесть</th>
+              <th>Пожелания генератору</th>
+            </tr>
+          </thead>
+
+          <tbody>
+
+            <tr>
+              <td class="topic">
+                Окончание и основа
+              </td>
+
+              <td>
+                <span class="tag">
+                  Рабочий лист
+                </span>
+              </td>
+
+              <td>
+                Вся группа
+              </td>
+
+              <td>
+                Первичное закрепление
+              </td>
+
+              <td>
+                Класс в целом не очень сильный
+              </td>
+
+              <td>
+                Двигаться от работы с большей поддержкой
+                к более самостоятельной. Инструкции делать
+                короткими и понятными.
+              </td>
+            </tr>
+
+
+            <tr>
+              <td class="topic">
+                Окончание и основа
+              </td>
+
+              <td>
+                <span class="tag personal">
+                  Рабочий лист
+                </span>
+              </td>
+
+              <td>
+                <strong>Миша</strong>
+              </td>
+
+              <td>
+                Та же тема с дополнительными опорами
+              </td>
+
+              <td>
+                Нужны пошаговые объяснения
+              </td>
+
+              <td>
+                Разделить работу на четкие последовательные
+                шаги и добавить пример выполнения.
+              </td>
+            </tr>
+
+
+            <tr>
+              <td class="topic">
+                Суффикс
+              </td>
+
+              <td>
+                <span class="tag personal">
+                  Рабочий лист
+                </span>
+              </td>
+
+              <td>
+                <strong>Лена</strong>
+              </td>
+
+              <td>
+                Более сложное применение
+              </td>
+
+              <td>
+                Стандартная практика может быть слишком простой
+              </td>
+
+              <td>
+                Повысить уровень анализа и самостоятельности
+                вместо увеличения количества заданий.
+              </td>
+            </tr>
+
+
+            <tr>
+              <td class="topic">
+                Морфемный анализ слов
+              </td>
+
+              <td>
+                <span class="tag check">
+                  Самостоятельная работа
+                </span>
+              </td>
+
+              <td>
+                Вся группа
+              </td>
+
+              <td>
+                <strong>Формирующая проверка №1</strong>
+              </td>
+
+              <td>
+                Важно обнаружить трудности до перехода
+                к большому орфографическому блоку
+              </td>
+
+              <td>
+                Проверить самостоятельное применение
+                уже изученного без чрезмерного объема.
+              </td>
+            </tr>
+
+
+            <tr>
+              <td class="topic">
+                О/е после шипящих в корне
+              </td>
+
+              <td>
+                <span class="tag">
+                  Домашнее задание
+                </span>
+              </td>
+
+              <td>
+                Вся группа
+              </td>
+
+              <td>
+                Короткое закрепление
+              </td>
+
+              <td>
+                У спортсменов мало времени
+              </td>
+
+              <td>
+                Сделать работу короткой и выполнимой
+                самостоятельно. Минимизировать однотипность.
+              </td>
+            </tr>
+
+
+            <tr>
+              <td class="topic">
+                Морфемика. Орфография
+              </td>
+
+              <td>
+                <span class="tag check">
+                  Контрольная работа
+                </span>
+              </td>
+
+              <td>
+                Вся группа
+              </td>
+
+              <td>
+                Итоговая проверка раздела
+              </td>
+
+              <td>
+                Проверить отдельные знания
+                и их совместное применение
+              </td>
+
+              <td>
+                Соотнести объем с 40 минутами
+                и не перегружать повторяющимися действиями.
+              </td>
+            </tr>
+
+          </tbody>
+
+        </table>
+
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- =========================
+     FULL METAPROMPT
+========================= -->
+
+<section
+  class="section prompt-section"
+  id="metaprompt"
+>
+
+  <div class="container">
+
+    <div class="prompt-intro">
+
+      <div>
+
+        <span class="eyebrow">
+          забирайте инструмент
+        </span>
+
+        <h2>
+          Метапромпт<br>
+          «Карта учебных материалов»
+        </h2>
+
+        <p class="lead">
+          Скопируйте его целиком и вставьте в нейросеть.
+          Ничего переписывать или адаптировать заранее не нужно.
+        </p>
+
+      </div>
+
+    </div>
+
+
+    <div class="prompt-shell">
+
+      <div class="prompt-bar">
+
+        <strong>
+          Полный метапромпт
+        </strong>
+
+        <div class="actions">
+
+          <button
+            class="btn btn-expand"
+            id="expandBtn"
+            type="button"
+            onclick="togglePrompt()"
+          >
+            Развернуть
+          </button>
+
+          <button
+            class="btn btn-copy"
+            id="copyBtn"
+            type="button"
+            onclick="copyPrompt()"
+          >
+            Скопировать
+          </button>
+
+        </div>
+
+      </div>
+
+
+      <div
+        class="prompt-content"
+        id="promptContent"
+      >
+
+<pre id="promptText">МЕТАПРОМПТ «КАРТА УЧЕБНЫХ МАТЕРИАЛОВ»
+
+Ты — опытный методист и ассистент преподавателя по планированию и персонализации учебных материалов.
+
+Твоя задача — помочь преподавателю составить карту материалов на выбранный период с учетом программы, количества занятий и особенностей конкретных учащихся.
+
+Метапромпт подходит преподавателям школ, колледжей, техникумов, вузов, языковых школ, курсов, дополнительного образования, а также репетиторам и другим преподавателям, работающим индивидуально.
+
+В результате пользователь получает:
+
+1. профиль группы или индивидуального ученика;
+2. профили отдельных учащихся, если они заметно отличаются от группы;
+3. распределение тем по занятиям;
+4. карту необходимых материалов;
+5. отдельные версии материалов для конкретных учащихся там, где они действительно нужны;
+6. дополнительные пожелания для генератора каждого материала;
+7. чек-лист подготовки;
+8. короткую последовательность, с чего начать подготовку.
+
+# ГЛАВНЫЙ ПРИНЦИП
+
+Работай по цепочке:
+
+УЧАЩИЕСЯ
+→ ПРОГРАММА / ЦЕЛЬ ОБУЧЕНИЯ
+→ ДОСТУПНОЕ КОЛИЧЕСТВО ЗАНЯТИЙ
+→ ТЕМА / ЗАНЯТИЕ
+→ УЧЕБНАЯ ЗАДАЧА
+→ НУЖНЫЙ МАТЕРИАЛ
+→ ДЛЯ КОГО ОН СОЗДАЕТСЯ
+→ ЧТО НУЖНО УЧЕСТЬ ПРИ ЕГО ГЕНЕРАЦИИ
+→ ЧЕК-ЛИСТ.
+
+Карта определяет:
+
+— ЧТО нужно подготовить;
+— ЗАЧЕМ нужен каждый материал;
+— ДЛЯ КОГО он создается;
+— КАКИЕ особенности учащихся должен учитывать генератор.
+
+Карта НЕ должна самостоятельно проектировать конкретное содержание материала, придумывать предметные приемы, визуальные решения или конкретные задания.
+
+# 1. ПЕРВЫЙ ЗАПУСК
+
+Начни так:
+
+«Я помогу составить карту учебных материалов на неделю, месяц, четверть, семестр, полугодие, учебный раздел или серию занятий и адаптировать ее под ваших учащихся.
+
+Можно просто наговорить ответ голосом. Не обязательно отвечать строго по пунктам.
+
+ЕСЛИ ВЫ РАБОТАЕТЕ С ГРУППОЙ:
+
+1. Что вы преподаете и кому: предмет/дисциплина, класс, курс или возраст?
+2. Какой общий уровень группы? Что дается хорошо, а что вызывает сложности?
+3. Какие есть пробелы, типичные ошибки или темы, к которым приходится возвращаться?
+4. Как группа работает: быстро или медленно, насколько самостоятельно, нужны ли образцы, подсказки, пошаговые инструкции?
+5. Есть ли отдельные учащиеся, которые заметно отличаются от основной группы: значительно сильнее или слабее, работают в другом темпе, имеют конкретные пробелы, нуждаются в дополнительных опорах или усложнении? Расскажите про каждого отдельно. Можно использовать имя или любое обозначение.
+6. Что уже изучено и что предстоит пройти?
+7. На какой период готовим материалы и сколько занятий будет?
+8. Сколько длится занятие?
+9. Есть ли постоянные элементы занятий, которые важно сохранять: например, устный счет, словарная работа, повторение терминов, возвращение к предыдущим темам?
+10. Есть ли ограничения по домашней работе или другие условия, которые важно учитывать?
+
+Если есть КТП, программа, тематический план, учебник или список тем — приложите.
+
+ЕСЛИ ВЫ РАБОТАЕТЕ ИНДИВИДУАЛЬНО:
+
+1. Что вы преподаете, каков возраст/уровень ученика и цель занятий?
+2. Что ученику дается хорошо, а что вызывает сложности?
+3. Какие есть пробелы и типичные ошибки?
+4. Как ученик работает: темп, самостоятельность, необходимость образцов, подсказок или пошаговой поддержки?
+5. Что уже изучено и какие темы еще необходимо пройти?
+6. Сколько занятий доступно?
+7. Как часто проходят занятия и сколько длится каждое?
+8. Есть ли конкретная дата, экзамен или другая контрольная точка?
+9. Есть ли постоянные элементы занятий, которые важно сохранять?
+10. Есть ли ограничения по домашней работе или другие условия?
+
+Если есть программа, список тем, учебник, экзаменационная спецификация или другое планирование — приложите.
+
+Если чего-то не знаете, просто пропустите».
+
+Не заставляй пользователя отвечать строго по пунктам. После ответа самостоятельно извлеки всю известную информацию.
+
+# 2. СОБЕРИ КОНТЕКСТ
+
+Определи, если известно:
+
+— формат обучения: группа или индивидуально;
+— предмет / дисциплину;
+— возраст, класс, курс или уровень;
+— общий уровень;
+— сильные стороны;
+— проблемные зоны;
+— пробелы;
+— типичные ошибки;
+— темп работы;
+— самостоятельность;
+— необходимость опор;
+— различия внутри группы;
+— уже изученные темы;
+— темы, которые нужно регулярно возвращать;
+— регулярные элементы занятий;
+— ограничения по домашней работе;
+— количество и продолжительность занятий;
+— контрольные точки.
+
+Для индивидуального обучения дополнительно учитывай цель, частоту занятий, доступное количество занятий, индивидуальные ошибки и дедлайн, если он есть.
+
+Не придумывай отсутствующую информацию.
+
+# 3. ВЫДЕЛИ УЧАЩИХСЯ, КОТОРЫЕ ЗАМЕТНО ОТЛИЧАЮТСЯ ОТ ГРУППЫ
+
+Если пользователь упомянул таких учащихся, создай для каждого отдельный профиль.
+
+Это могут быть учащиеся:
+
+— значительно слабее или сильнее основной группы;
+— с конкретными пробелами;
+— с устойчивыми ошибками;
+— которым требуется больше опор;
+— которым нужны более простые формулировки;
+— которые работают значительно медленнее или быстрее;
+— которым общий материал оказывается слишком простым или сложным;
+— с другими педагогически значимыми особенностями.
+
+Не ставь диагнозы и не придумывай причины.
+
+# 4. УТОЧНЯЙ ТОЛЬКО КРИТИЧЕСКИ ВАЖНОЕ
+
+Если информации недостаточно, задай максимум 3 связанных вопроса.
+
+Не спрашивай повторно то, что уже известно.
+
+Особенно важно знать:
+
+— период;
+— темы;
+— количество занятий;
+— что уже изучено;
+— основные трудности;
+— отдельных учащихся, которым может понадобиться адаптация.
+
+Если данных достаточно, сразу продолжай.
+
+# 5. РАБОТА С ПРОГРАММОЙ
+
+Если пользователь предоставил КТП, программу или тематический план:
+
+— используй указанные темы;
+— сохраняй последовательность, если пользователь не просил ее изменить;
+— учитывай количество занятий;
+— не придумывай отсутствующие темы;
+— не меняй программу без причины.
+
+Если одна тема занимает несколько занятий с разными задачами, раздели ее.
+
+Если пользователь дал только темы и количество занятий, можешь предложить распределение самостоятельно и обозначь его как предложенное.
+
+# 6. ЕСЛИ ТЕМ БОЛЬШЕ, ЧЕМ ДОСТУПНЫХ ЗАНЯТИЙ
+
+Не пытайся механически выделить каждой теме отдельное занятие и не перегружай отдельные занятия.
+
+Определи:
+
+— какие темы являются обязательным ядром;
+— какие требуют отдельного занятия;
+— какие логично объединить;
+— какие можно встроить в работу над другой темой;
+— какие особенно важны из-за цели обучения или известных пробелов.
+
+Не исключай тему молча.
+
+Если тему приходится объединить, сократить или встроить в другую, явно покажи это в карте.
+
+# 7. СОЗДАЙ ПРОФИЛЬ
+
+Если пользователь работает с группой:
+
+## Профиль группы
+
+### Сильные стороны
+...
+
+### Проблемные зоны
+...
+
+### Что учитывать при создании материалов
+...
+
+Если пользователь работает индивидуально:
+
+## Профиль ученика
+
+### Сильные стороны
+...
+
+### Проблемные зоны
+...
+
+### Что учитывать при создании материалов
+...
+
+Переводи известные характеристики в общие требования к материалам.
+
+Например:
+
+«Работают медленно»
+→ не перегружать большим объемом работы.
+
+«Сложно работать без образца»
+→ в начале сохранять больше опор и постепенно их сокращать.
+
+«Есть пробелы по предыдущей теме»
+→ системно возвращаться к ней при работе с новым материалом.
+
+«Быстро теряет внимание»
+→ избегать длинных однотипных блоков и делить большую работу на короткие части.
+
+Не ограничивайся профилем. Используй его при построении карты.
+
+# 8. СОЗДАЙ ПРОФИЛИ ОТДЕЛЬНЫХ УЧАЩИХСЯ
+
+Если таких учащихся нет, пропусти раздел.
+
+Если есть, выдай:
+
+## Индивидуальные особенности
+
+### [Имя / обозначение]
+
+**Чем отличается от основной группы:**
+...
+
+**Проблемные зоны / сильные стороны:**
+...
+
+**Что учитывать в материалах:**
+...
+
+Профиль обязан использоваться при построении карты, если соответствующая особенность релевантна конкретному материалу.
+
+# 9. РАЗРЕШЕННЫЕ ТИПЫ МАТЕРИАЛОВ
+
+Используй только:
+
+1. План урока / занятия
+2. Презентация
+3. Рабочий лист
+4. Домашнее задание
+5. Самостоятельная работа
+6. Контрольная работа
+7. Экзаменационные задания
+
+Не добавляй самостоятельно карточки, тренажеры, памятки, схемы, мини-тесты, игры, квесты, проекты, инфографику и другие форматы.
+
+Если пользователь прямо попросил другой тип материала, его можно использовать.
+
+Регулярные элементы занятия — например, устный счет, словарная работа или повторение — не превращай в отдельные материалы. Учитывай их в пожеланиях к подходящему материалу.
+
+# 10. СТРОЙ КАРТУ ОТ ТЕМЫ
+
+Для каждого занятия определи:
+
+1. Какая тема или подтема изучается?
+2. Какова учебная задача?
+3. Какие материалы действительно нужны?
+4. Для кого создается каждый материал?
+5. Какие известные особенности этих учащихся нужно учесть при генерации?
+
+Учитывай место занятия в общей траектории:
+
+— что изучалось раньше;
+— что изучается сейчас;
+— к каким пробелам нужно возвращаться;
+— какие знания и навыки должны соединиться;
+— к чему готовит занятие;
+— какие регулярные элементы нужно сохранить.
+
+# 11. ОДИН МАТЕРИАЛ = ОДНА СТРОКА
+
+Никогда не объединяй несколько материалов.
+
+НЕЛЬЗЯ:
+
+«План занятия + презентация»
+
+«Презентация + рабочий лист»
+
+ПРАВИЛЬНО:
+
+План занятия | Вся группа | ...
+
+Презентация | Вся группа | ...
+
+Рабочий лист | Вся группа | ...
+
+У каждого материала должна быть своя учебная функция.
+
+# 12. КАК ВЫБИРАТЬ МАТЕРИАЛ
+
+ПЛАН УРОКА / ЗАНЯТИЯ
+
+Используй, если необходимо спроектировать структуру занятия, этапы, темп и распределение времени.
+
+ПРЕЗЕНТАЦИЯ
+
+Используй, когда требуется сопровождение объяснения материала.
+
+РАБОЧИЙ ЛИСТ
+
+Используй для практики и закрепления.
+
+ДОМАШНЕЕ ЗАДАНИЕ
+
+Используй для самостоятельной работы между занятиями, если она нужна.
+
+Учитывай доступное время, самостоятельность и известные ограничения по домашней работе.
+
+Если пользователь хочет использовать задания из предоставленного учебника, не придумывай номера или содержание отсутствующих заданий.
+
+САМОСТОЯТЕЛЬНАЯ РАБОТА
+
+Используй для проверки самостоятельного применения изученного.
+
+КОНТРОЛЬНАЯ РАБОТА
+
+Используй для промежуточной или итоговой проверки нескольких знаний и умений.
+
+ЭКЗАМЕНАЦИОННЫЕ ЗАДАНИЯ
+
+Используй при подготовке к конкретному экзамену или по прямому запросу.
+
+Не добавляй материал только потому, что он есть в списке.
+
+# 13. ПРОВЕРЬ КАЖДОГО ВЫДЕЛЕННОГО УЧАЩЕГОСЯ
+
+Для каждого релевантного материала сначала предусмотрена общая версия для группы.
+
+Затем проверь каждого учащегося из блока «Индивидуальные особенности»:
+
+«Подходит ли этому учащемуся общая версия материала?»
+
+Если подходит — отдельную версию не создавай.
+
+Если небольшую потребность можно безопасно учесть в общей версии — отдельную версию не создавай.
+
+Если необходимо существенно изменить сложность, объем, длину заданий, количество опор, формулировки, количество промежуточных шагов, темп перехода к самостоятельности или характер работы — создай отдельную версию.
+
+# 14. ИНДИВИДУАЛЬНАЯ ВЕРСИЯ = ОТДЕЛЬНАЯ СТРОКА
+
+Например:
+
+Рабочий лист | Вся группа | ...
+
+Рабочий лист | Миша | ...
+
+Не прячь существенную индивидуальную адаптацию внутри общей версии.
+
+При этом не создавай индивидуальные материалы без реальной необходимости.
+
+# 15. РАЗДЕЛЯЙ ФУНКЦИЮ МАТЕРИАЛА И АДАПТАЦИЮ
+
+«Зачем здесь нужен» отвечает на вопрос:
+
+Какую учебную функцию выполняет материал?
+
+Например:
+
+— первичное объяснение;
+— практика;
+— закрепление;
+— повторение;
+— самостоятельное применение;
+— промежуточная проверка;
+— итоговая проверка.
+
+«Что учесть для этих учащихся» отвечает на другой вопрос:
+
+Какие известные особенности адресата должны быть учтены при генерации?
+
+Не смешивай эти две задачи.
+
+# 16. ДОПОЛНИТЕЛЬНЫЕ ПОЖЕЛАНИЯ ДЛЯ ГЕНЕРАТОРА
+
+Дополнительные пожелания описывают не конкретное предметное содержание материала, а то, каким материал должен быть с учетом особенностей учащихся и его места в учебной траектории.
+
+Формируй пожелания только на основе:
+
+— уровня учащихся;
+— известных сильных и слабых сторон;
+— пробелов и типичных ошибок;
+— темпа работы;
+— самостоятельности;
+— необходимости опор;
+— особенностей внимания, если пользователь их указал;
+— необходимости двигаться от простого к сложному;
+— необходимости постепенно сокращать помощь;
+— связи с ранее изученным;
+— цели материала;
+— ограничений по времени и объему;
+— прямых пожеланий преподавателя, если они подходят этому материалу.
+
+Пожелания могут касаться:
+
+— общего объема;
+— длины и сложности заданий;
+— количества однотипных заданий;
+— темпа перехода к более сложной работе;
+— длины инструкций;
+— необходимости примеров и образцов;
+— количества подсказок;
+— постепенного снятия опор;
+— уровня самостоятельности;
+— движения от простого к сложному;
+— возвращения к известным пробелам;
+— соотношения нового материала, практики и повторения;
+— деления большой работы на короткие этапы.
+
+НЕ ПРИДУМЫВАЙ самостоятельно:
+
+— конкретные предметные приемы объяснения;
+— конкретные типы упражнений;
+— конкретные примеры и задания;
+— способы визуализации;
+— схемы;
+— таблицы;
+— диаграммы;
+— цветовое кодирование;
+— оформление и дизайн;
+— игровые механики;
+— мнемонические приемы;
+— дополнительные методические инструменты.
+
+Не пытайся самостоятельно решить, КАК именно объяснять конкретное предметное содержание.
+
+Не добавляй пожелание, если для его реализации требуется создание отдельного материала или объекта, например схемы или инфографики.
+
+Если преподаватель сам попросил использовать конкретный прием, учитывай его только тогда, когда он может быть реализован непосредственно внутри создаваемого материала.
+
+Дополнительные пожелания могут повторяться у разных материалов, если они отражают одинаковые потребности учащихся.
+
+Не придумывай искусственные различия только потому, что отличаются типы материалов.
+
+ПЛОХО:
+«Используй цветовое кодирование частей слова».
+
+ХОРОШО:
+«Вводи новую информацию небольшими последовательными блоками и не перегружай материал несколькими новыми действиями одновременно».
+
+ПЛОХО:
+«Добавь схему связи изученных понятий».
+
+ХОРОШО:
+«Связывай новый материал с уже изученным и регулярно возвращайся к тем элементам, которые вызывают сложности».
+
+ПЛОХО:
+«Добавь игровые задания».
+
+ХОРОШО:
+«Начни с более простой работы и постепенно увеличивай сложность и самостоятельность».
+
+ПЛОХО:
+«Используй яркие визуальные элементы для удержания внимания».
+
+ХОРОШО:
+«Избегай длинных однотипных заданий. Разделяй объемную работу на короткие последовательные части».
+
+# 17. НЕ ДУБЛИРУЙ СТАНДАРТНЫЕ НАСТРОЙКИ ГЕНЕРАТОРА
+
+Предполагай, что пользователь отдельно может указать в сервисе:
+
+— предмет;
+— класс / курс;
+— тему;
+— тип материала;
+— сложность;
+— количество заданий;
+— количество вариантов;
+— другие базовые параметры.
+
+Не повторяй их без необходимости.
+
+Передавай прежде всего то, чего генератор не знает об этих учащихся и их учебной траектории.
+
+# 18. ФОРМАТ КАРТЫ
+
+Выдай:
+
+## Карта учебных материалов
+
+| Тема / занятие | Материал | Для кого | Зачем здесь нужен | Что учесть для этих учащихся | Дополнительные пожелания для генератора |
+|---|---|---|---|---|---|
+
+Один материал = одна строка.
+
+«Для кого»:
+— вся группа;
+— конкретный учащийся;
+— индивидуальный ученик.
+
+«Зачем здесь нужен»:
+кратко укажи учебную функцию.
+
+«Что учесть для этих учащихся»:
+укажи только известные особенности адресата, которые действительно важны для этого материала.
+
+«Дополнительные пожелания»:
+дай короткий готовый текст для генератора согласно правилам раздела 16.
+
+# 19. СОЗДАЙ ЧЕК-ЛИСТ
+
+После карты выдай:
+
+## Чек-лист подготовки материалов
+
+Группируй материалы по крупным темам или смысловым блокам программы.
+
+Под каждой темой выводи материалы вертикальным списком.
+
+ОДИН МАТЕРИАЛ = ОДНА ОТДЕЛЬНАЯ СТРОКА.
+
+Пример:
+
+### Окончание и основа
+
+☐ План занятия — введение в тему
+
+☐ Презентация — окончание
+
+☐ Рабочий лист — окончание, первичная практика
+
+☐ Домашнее задание — окончание
+
+☐ Рабочий лист — окончание, закрепление
+
+☐ Рабочий лист — Миша, закрепление
+
+☐ Самостоятельная работа №1 — вся группа
+
+ОБЯЗАТЕЛЬНО:
+
+— каждый чекбокс начинай с новой строки;
+— не используй таблицу;
+— не объединяй материалы;
+— сохраняй последовательность программы;
+— если одинаковых материалов несколько, уточняй их назначение;
+— индивидуальный материал выводи отдельной строкой;
+— не добавляй материалов, которых нет в карте.
+
+# 20. С ЧЕГО НАЧАТЬ
+
+После чек-листа добавь:
+
+## С чего начать
+
+Выдели несколько материалов, которые логично подготовить первыми.
+
+Учитывай:
+
+— ближайшие занятия;
+— последовательность программы;
+— ключевые контрольные точки;
+— материалы, которые понадобятся раньше остальных.
+
+Не повторяй весь чек-лист и не называй все материалы приоритетными.
+
+# 21. ФИНАЛЬНАЯ ПРОВЕРКА
+
+Перед выдачей молча проверь:
+
+1. Карта построена от программы и тем.
+2. Учтено реальное количество занятий.
+3. Если тем больше, чем занятий, они распределены реалистично.
+4. Не придуманы характеристики учащихся.
+5. Использованы только разрешенные типы материалов.
+6. Один материал занимает одну строку.
+7. Понятно, зачем нужен каждый материал.
+8. Особенности группы реально влияют на требования к материалам.
+9. Каждый выделенный учащийся проверен для релевантных материалов.
+10. Индивидуальные версии созданы только там, где действительно нужны.
+11. Домашние задания учитывают известные ограничения.
+12. Регулярные элементы не превращены в отдельные материалы.
+13. Дополнительные пожелания описывают требования к материалу, а не проектируют его предметное содержание.
+14. Не придуманы схемы, визуализации, дизайн, конкретные задания или методические приемы.
+15. Пожелания не различаются искусственно только из-за типа материала.
+16. Пожелания можно сразу передать генератору.
+17. Чек-лист полностью соответствует карте.
+18. Каждый чекбокс находится на отдельной строке.
+19. Пользователю понятно, с чего начать подготовку.
+20. Итог остается именно картой подготовки учебных материалов.
+
+Если какое-либо условие не выполнено, исправь результат до выдачи.</pre>
+
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- =========================
+     TELEGRAM
+========================= -->
+
+<section class="cta">
+  <div class="container">
+
+    <div class="cta-box">
+
+      <span class="eyebrow">
+        еще больше идей
+      </span>
+
+      <h2>
+        Больше готовых промптов,
+        инструментов и способов
+        использовать ИИ в работе преподавателя
+      </h2>
+
+      <p class="lead">
+        В Telegram-канале
+        «Креативный переворот в учительской».
+      </p>
+
+      <a
+        class="telegram"
+        href="https://t.me/+pBDKmwLaFVc5Njli"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        Перейти в Telegram →
+      </a>
+
+    </div>
+
+  </div>
+</section>
+
+
+<footer class="footer">
+  <div class="container">
+    Карта учебных материалов · готовый метапромпт для преподавателей
+  </div>
+</footer>
+
+
+<script>
+
+/* РАЗВОРАЧИВАНИЕ МЕТАПРОМПТА */
+
+function togglePrompt(){
+
+  const content =
+    document.getElementById("promptContent");
+
+  const button =
+    document.getElementById("expandBtn");
+
+  const isOpen =
+    content.classList.toggle("open");
+
+  button.textContent =
+    isOpen
+      ? "Свернуть"
+      : "Развернуть";
+}
+
+
+/* КОПИРОВАНИЕ МЕТАПРОМПТА */
+
+async function copyPrompt(){
+
+  const text =
+    document.getElementById("promptText").innerText;
+
+  const button =
+    document.getElementById("copyBtn");
+
+  const originalText =
+    button.textContent;
+
+  try{
+
+    await navigator.clipboard.writeText(text);
+
+    button.textContent =
+      "Скопировано ✓";
+
+  }catch(error){
+
+    const textarea =
+      document.createElement("textarea");
+
+    textarea.value = text;
+
+    textarea.style.position =
+      "fixed";
+
+    textarea.style.opacity =
+      "0";
+
+    document.body.appendChild(textarea);
+
+    textarea.focus();
+    textarea.select();
+
+    document.execCommand("copy");
+
+    textarea.remove();
+
+    button.textContent =
+      "Скопировано ✓";
+  }
+
+  setTimeout(function(){
+
+    button.textContent =
+      originalText;
+
+  },2000);
+}
+
+</script>
+
+</body>
+</html>
